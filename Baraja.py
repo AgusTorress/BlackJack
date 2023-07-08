@@ -1,8 +1,9 @@
 import random
 from Carta import carta
+from collections import deque
 
 def crear_baraja():
-    cartas = []
+    cartas = deque()
     idCartas = [str(num) for num in range(2, 11)] + ["J", "Q", "K", "A"]
 
     tipos = ["DIAMANTES", "PICAS", "TREBOLES", "CORAZONES"]
