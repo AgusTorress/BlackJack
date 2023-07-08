@@ -75,10 +75,14 @@ def main():
             else:
                 print("Has perdido, el crupier te ganó.")
                 u.nuevoPatri(-u.apuesta)
+            if u.dineroTotal == 0:
+                usuarios.remove(u)
         
         seguir_jugando = str(input("Desea seguir jugando? ")) in ["Si", "si"]
         for u in usuarios:
             u.limpiar_cartas()
+        if len(usuarios) == 0:
+            lockCantUser = False
         crupier.limpiar_cartas()
         cartas = crear_baraja()
         cartas = barajar(cartas)
