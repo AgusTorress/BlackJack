@@ -44,42 +44,30 @@ def main():
                 print(carta.idCarta + " " + carta.tipo)  
         for u in usuarios:
             valorCarta = u.calcularValorCartas() 
-            if valorCarta == 21:
-                u.nuevoPatri(u.apuesta * 2)
-                print("BLACKJACK!")
-            elif valorCarta > 21:
-                u.nuevoPatri(-u.apuesta)
-                print(u.nombre + ", has perdido, el valor de tus cartas es: " + str(valorCarta))
-            else:
-                seguirAgarrando = str(input(u.nombre + ", desea seguir tomando cartas? ")) in ["Si", "si"]
-                while valorCarta < 21 and seguirAgarrando:
-                    cartita = cartas.pop()
-                    u.obtenerCarta(cartita)
-                    print(u.nombre + " tus cartas son: " )
-                    for carta in u.misCartas:
-                        print(carta.idCarta + " " + carta.tipo)
-                    valorCarta = u.calcularValorCartas()
-                    if valorCarta < 21:
-                        seguirAgarrando = str(input(u.nombre + ", desea seguir tomando cartas? ")) in ["Si", "si"]
-                """if valorCarta == 21:
-                    print("BLACKJACK!")
-                    u.nuevoPatri(u.apuesta * 2)
-                elif valorCarta > 21:
-                    print("Has perdido, el valor de tus cartas es: " + str(valorCarta))
-                    u.nuevoPatri(-u.apuesta)"""
+            seguirAgarrando = str(input(u.nombre + ", desea seguir tomando cartas? ")) in ["Si", "si"]
+            while valorCarta < 21 and seguirAgarrando:
+                cartita = cartas.pop()
+                u.obtenerCarta(cartita)
+                print(u.nombre + " tus cartas son: " )
+                for carta in u.misCartas:
+                    print(carta.idCarta + " " + carta.tipo)
+                valorCarta = u.calcularValorCartas()
+                if valorCarta < 21:
+                    seguirAgarrando = str(input(u.nombre + ", desea seguir tomando cartas? ")) in ["Si", "si"]
         while crupier.debeTomarCarta():
             crupier.obtenerCarta(cartas.pop())
             crupier.mostrarCartas()
         valorCartasCrupier = crupier.calcularValorCartas()
         for u in usuarios:
             valorCarta = u.calcularValorCartas()
+            print("------------ " + u.nombre + " ------------")
             if  valorCarta > 21:
                 print("Has perdido, el valor de tus cartas es: " + str(valorCarta))
                 u.nuevoPatri(-u.apuesta)
             elif valorCarta == 21:
                 print("BLACKJACK!")
                 u.nuevoPatri(u.apuesta * 3)
-            elif valorCarta > valorCartasCrupier:
+            elif valorCarta > valorCartasCrupier or valorCartasCrupier > 21:
                 print("Le has ganado al crupier :)")
                 u.nuevoPatri(u.apuesta * 2)
             elif valorCarta == valorCartasCrupier:
