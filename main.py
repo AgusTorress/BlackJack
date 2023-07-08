@@ -61,13 +61,15 @@ def main():
         for u in usuarios:
             valorCarta = u.calcularValorCartas()
             print("------------ " + u.nombre + " ------------")
-            if  valorCarta > 21:
-                print("Has perdido, el valor de tus cartas es: " + str(valorCarta))
-                u.nuevoPatri(-u.apuesta)
-            elif valorCarta == 21:
+            if valorCarta == 21 and valorCartasCrupier != 21:
                 print("BLACKJACK!")
                 u.nuevoPatri(u.apuesta * 3)
-            elif valorCarta > valorCartasCrupier or valorCartasCrupier > 21:
+            elif  valorCarta > 21:
+                print("Has perdido, el valor de tus cartas es: " + str(valorCarta))
+                u.nuevoPatri(-u.apuesta)
+            elif valorCartasCrupier > 21:
+                print("El crupier ha perdido")    
+            elif valorCarta > valorCartasCrupier:
                 print("Le has ganado al crupier :)")
                 u.nuevoPatri(u.apuesta * 2)
             elif valorCarta == valorCartasCrupier:
