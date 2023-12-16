@@ -6,7 +6,7 @@ def crear_baraja():
     cartas = deque()
     idCartas = [str(num) for num in range(2, 11)] + ["J", "Q", "K", "A"]
 
-    tipos = ["DIAMANTES", "PICAS", "TREBOLES", "CORAZONES"]
+    tipos = ["♦", "♠️", "☘", "❤"]
     for idCarta in idCartas:
         for tipo in tipos:
             cartas.append(carta(idCarta, tipo))

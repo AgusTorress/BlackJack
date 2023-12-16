@@ -10,7 +10,7 @@ class Crupier:
 
     def mostrarCartas(self, mostrar_todas=True):
         if mostrar_todas:
-            print("--------- Cartas del crupier: -----------")
+            print("----------- Cartas del crupier: -----------")
             for carta in self.misCartas:
                 print(carta.idCarta, carta.tipo)
         else:

@@ -15,7 +15,7 @@ class user:
             self.dineroTotal += valor
 
     def nuevaApuesta(self, apuesta):
-        if apuesta <= self.dineroTotal:
+        if apuesta <= self.dineroTotal and apuesta > 0:
             self.apuesta = apuesta
             return True
         else:

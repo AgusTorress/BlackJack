@@ -1,9 +1,3 @@
-from enum import Enum
-
-
-    
-
-
 class carta:
     def __init__(self, idCarta, tipo):
         self.tipo = tipo
